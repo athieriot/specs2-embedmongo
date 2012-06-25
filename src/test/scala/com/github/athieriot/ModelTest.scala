@@ -1,4 +1,4 @@
-package org.at
+package com.github.athieriot
 
 import org.specs2.mutable.Specification
 import com.mongodb.casbah.Imports._

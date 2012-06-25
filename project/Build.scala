@@ -6,7 +6,7 @@ object ProjectBuild extends Build {
   lazy val buildVersion =  "0.1"
 
   lazy val root = Project(id = "specs2-embeddedmongo", base = file("."), settings = Project.defaultSettings).settings(
-    organization := "org.at",
+    organization := "com.github.athieriot",
     description := "Specs2 helper to configure a EmbeddedMongo based instance",
     version := buildVersion,
     scalaVersion := "2.9.1",

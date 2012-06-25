@@ -1,4 +1,4 @@
-package org.at
+package com.github.athieriot
 
 import de.flapdoodle.embedmongo._
 import config.MongodConfig
