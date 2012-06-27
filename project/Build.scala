@@ -3,11 +3,11 @@ import sbt.Keys._
 
 object ProjectBuild extends Build {
 
-  lazy val buildVersion =  "0.1"
+  lazy val buildVersion =  "0.2"
 
-  lazy val root = Project(id = "specs2-embeddedmongo", base = file("."), settings = Project.defaultSettings).settings(
+  lazy val root = Project(id = "specs2-embedmongo", base = file("."), settings = Project.defaultSettings).settings(
     organization := "com.github.athieriot",
-    description := "Specs2 helper to configure a EmbeddedMongo based instance",
+    description := "Specs2 helper to configure a EmbedMongo based instance",
     version := buildVersion,
     scalaVersion := "2.9.1",
     resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
@@ -15,13 +15,13 @@ object ProjectBuild extends Build {
     resolvers += "Novus Snapshots" at "http://repo.novus.com/snapshots/",
     libraryDependencies += "de.flapdoodle.embedmongo" % "de.flapdoodle.embedmongo" % "1.16",
     libraryDependencies += "org.specs2" %% "specs2" % "1.11",
-    libraryDependencies += "com.novus" %% "salat-core" % "0.0.8-SNAPSHOT" % "test",
+    libraryDependencies += "com.novus" %% "salat-core" % "0.0.8" % "test",
 
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },
     pomExtra := (
-      <url>http://github.com/athieriot/specs2-embeddedmongo</url>
+      <url>http://github.com/athieriot/specs2-embedmongo</url>
       <licenses>
         <license>
           <name>Apache 2.0</name>
@@ -30,8 +30,8 @@ object ProjectBuild extends Build {
         </license>
       </licenses>
       <scm>
-        <url>git@github.com:athieriot/specs2-embeddedmongo.git</url>
-        <connection>scm:git:git@github.com:athieriot/specs2-embeddedmongo.git</connection>
+        <url>git@github.com:athieriot/specs2-embedmongo.git</url>
+        <connection>scm:git:git@github.com:athieriot/specs2-embedmongo.git</connection>
       </scm>
       <developers>
         <developer>

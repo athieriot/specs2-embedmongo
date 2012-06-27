@@ -7,11 +7,11 @@ import com.novus.salat.global._
 import com.novus.salat._
 import com.novus.salat.dao._
 
-class ModelTest extends Specification with EmbeddedConnection {
+class ModelTest extends Specification with EmbedConnection {
 
-  override def embeddedConnectionPort() = { 12345 }
+  override def embedConnectionPort() = { 12345 }
 
-  "Embedded database" should {
+  "Embed database" should {
     "be able to save a Model" in {
       Model.save(Model(name = "test"))
       Model.count() must be greaterThan 0
