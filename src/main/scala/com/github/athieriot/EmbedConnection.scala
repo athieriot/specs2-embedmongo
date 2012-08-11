@@ -13,17 +13,16 @@ trait EmbedConnection extends BeforeExample with AfterExample {
   //Override this method to personalize MongoDB version
   def embedMongoDBVersion(): Version = { Version.V2_1_1 }
 
-  var _mongodExe: MongodExecutable = null
-  var _mongod: MongodProcess = null
+  lazy val mongoDBRuntime: MongoDBRuntime = MongoDBRuntime. getDefaultInstance
+  lazy val mongodExe: MongodExecutable = mongoDBRuntime.prepare(new MongodConfig(embedMongoDBVersion(), embedConnectionPort(), true))
+  lazy val mongod: MongodProcess = mongodExe.start()
 
   def before() {
-    val runtime: MongoDBRuntime = MongoDBRuntime. getDefaultInstance
-    _mongodExe = runtime.prepare(new MongodConfig(embedMongoDBVersion(), embedConnectionPort(), true))
-    _mongod = _mongodExe.start()
+    mongod
   }
 
   def after() {
-    _mongod.stop()
-    _mongodExe.cleanup()
+    mongod.stop()
+    mongodExe.cleanup()
   }
 }
