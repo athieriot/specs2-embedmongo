@@ -3,9 +3,9 @@ package com.github.athieriot
 import de.flapdoodle.embedmongo._
 import config.MongodConfig
 import distribution.Version
-import org.specs2.specification.{AfterExample, BeforeExample}
+import org.specs2.specification.BeforeAfterExample
 
-trait EmbedConnection extends BeforeExample with AfterExample {
+trait EmbedConnection extends BeforeAfterExample {
 
   //Override this method to personalize testing port
   def embedConnectionPort(): Int = { 12345 }
