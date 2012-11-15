@@ -15,7 +15,7 @@ object ProjectBuild extends Build {
     resolvers += "Novus Snapshots" at "http://repo.novus.com/snapshots/",
     libraryDependencies += "de.flapdoodle.embedmongo" % "de.flapdoodle.embedmongo" % "1.16",
     libraryDependencies += "org.specs2" %% "specs2" % "1.11",
-    libraryDependencies += "com.novus" %% "salat-core" % "0.0.8" % "test",
+    libraryDependencies += "com.novus" %% "salat-core" % "1.9.1" % "test",
 
     publishMavenStyle := true,
     publishArtifact in Test := false,
