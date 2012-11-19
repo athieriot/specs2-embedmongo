@@ -13,7 +13,7 @@ object ProjectBuild extends Build {
     resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/",
     resolvers += "Novus Snapshots" at "http://repo.novus.com/snapshots/",
-    libraryDependencies += "de.flapdoodle.embedmongo" % "de.flapdoodle.embedmongo" % "1.16",
+    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.28-SNAPSHOT",
     libraryDependencies += "org.specs2" %% "specs2" % "1.11",
     libraryDependencies += "com.novus" %% "salat-core" % "1.9.1" % "test",
 
