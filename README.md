@@ -13,4 +13,10 @@ You can change thow default values:
 
 # What it looks like?
 
- - [Sample](https://github.com/athieriot/specs2-embedmongo/tree/master/src/test/scala/org/at/ModelTest.scala)
+ - [Sample](https://github.com/athieriot/specs2-embedmongo/tree/master/src/test/scala/com/github/athieriot/ModelTest.scala)
+
+# Add as dependency
+
+Modify `project/Build.scala` and add
+
+`"com.github.athieriot" %% "specs2-embedmongo" % "0.4"`
