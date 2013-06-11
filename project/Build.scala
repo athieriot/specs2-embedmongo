@@ -3,19 +3,25 @@ import sbt.Keys._
 
 object ProjectBuild extends Build {
 
-  lazy val buildVersion =  "0.5"
+  lazy val buildVersion =  "0.5.1"
 
   lazy val root = Project(id = "specs2-embedmongo", base = file("."), settings = Project.defaultSettings).settings(
     organization := "com.github.athieriot",
     description := "Specs2 helper to configure a EmbedMongo based instance",
     version := buildVersion,
-    scalaVersion := "2.9.1",
+
+    crossScalaVersions := Seq("2.9.2", "2.10.1"),
+    scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
+
     resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/",
     resolvers += "Novus Snapshots" at "http://repo.novus.com/snapshots/",
-    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.28",
-    libraryDependencies += "org.specs2" %% "specs2" % "1.11",
-    libraryDependencies += "com.novus" %% "salat-core" % "1.9.1" % "test",
+    resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+    resolvers += "Sonatype releases" at "https://oss.sonatype.org/content/repositories/releases/",
+
+    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.33",
+    libraryDependencies += "org.specs2" %% "specs2" % "1.12.3",
+    libraryDependencies += "com.novus" %% "salat-core" % "1.9.2-SNAPSHOT" % "test",
 
     publishMavenStyle := true,
     publishArtifact in Test := false,

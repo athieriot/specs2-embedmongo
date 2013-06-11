@@ -19,4 +19,4 @@ You can change thow default values:
 
 Modify `project/Build.scala` and add
 
-`"com.github.athieriot" %% "specs2-embedmongo" % "0.5"`
+`"com.github.athieriot" %% "specs2-embedmongo" % "0.5.1"`
