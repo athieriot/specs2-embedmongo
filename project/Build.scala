@@ -21,7 +21,7 @@ object ProjectBuild extends Build {
 
     libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.33",
     libraryDependencies += "org.specs2" %% "specs2" % "1.12.3",
-    libraryDependencies += "com.novus" %% "salat-core" % "1.9.2-SNAPSHOT" % "test",
+    libraryDependencies += "com.novus" %% "salat-core" % "1.9.4" % "test",
 
     publishMavenStyle := true,
     publishArtifact in Test := false,
