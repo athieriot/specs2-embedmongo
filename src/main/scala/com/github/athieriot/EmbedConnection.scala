@@ -30,7 +30,7 @@ trait EmbedConnection extends AfterExample with FragmentsBuilder {
   lazy val mongodConfig = new MongodConfigBuilder()
     .version(embedMongoDBVersion)
     .net(network)
-    .build;
+    .build
 
   lazy val runtime = MongodStarter.getDefaultInstance
 
