@@ -6,6 +6,7 @@ import org.specs2.mutable.Specification
 
 @RunWith(classOf[JUnitRunner])
 class EmbedConnectionSpec extends Specification with EmbedConnection {
+  sequential
 
   "Embed database" should {
     "be able to save a Model I" in {

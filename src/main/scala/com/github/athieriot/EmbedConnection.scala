@@ -7,10 +7,15 @@ import config._
 import distribution._
 import org.specs2.specification._
 import org.specs2.mutable.SpecificationLike
+import org.specs2.main.Arguments
 
 trait EmbedConnection extends FragmentsBuilder {
   self: SpecificationLike =>
-  sequential
+  isolated
+
+  override def sequential: Arguments = args(isolated = false, sequential = true)
+
+  override def isolated: Arguments = args(isolated = true, sequential = false)
 
   //Override this method to personalize testing port
   def embedConnectionPort(): Int = { 12345 }
