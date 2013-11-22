@@ -3,15 +3,13 @@ import sbt.Keys._
 
 object ProjectBuild extends Build {
 
-  lazy val buildVersion =  "0.5.1"
+  lazy val buildVersion =  "0.6.0"
 
   lazy val root = Project(id = "specs2-embedmongo", base = file("."), settings = Project.defaultSettings).settings(
     organization := "com.github.athieriot",
     description := "Specs2 helper to configure a EmbedMongo based instance",
     version := buildVersion,
-
-    crossScalaVersions := Seq("2.9.2", "2.10.1"),
-    scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
+    scalaVersion := "2.10.1",
 
     resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/",
@@ -19,9 +17,15 @@ object ProjectBuild extends Build {
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
     resolvers += "Sonatype releases" at "https://oss.sonatype.org/content/repositories/releases/",
 
-    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.33",
-    libraryDependencies += "org.specs2" %% "specs2" % "1.12.3",
-    libraryDependencies += "com.novus" %% "salat-core" % "1.9.4" % "test",
+    libraryDependencies <++= scalaVersion(sv => Seq(
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.40",
+      "org.specs2"  %% "specs2" % specs2Version(sv),
+      "org.mongodb" %% "casbah-core" % "2.6.4" % "provided",
+      "com.novus" %% "salat-core" % "1.9.4" % "test",
+      "junit" % "junit" % "4.11" % "test"
+      )),
+
+    parallelExecution in Test := false,
 
     publishMavenStyle := true,
     publishArtifact in Test := false,
@@ -55,4 +59,10 @@ object ProjectBuild extends Build {
         Some("releases" at nexus + "service/local/staging/deploy/maven2")
     }
   )
+
+  private val specs2Version: String => String = {
+    case sv if sv startsWith "2.9."   => "1.12.4.1"
+    case _                            => "2.3.4"
+  }
+
 }
