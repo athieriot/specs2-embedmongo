@@ -21,7 +21,8 @@ object ProjectBuild extends Build {
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.40",
       "org.specs2"  %% "specs2" % specs2Version(sv),
       "org.mongodb" %% "casbah-core" % "2.6.4" % "provided",
-      "com.novus" %% "salat-core" % "1.9.4" % "test"
+      "com.novus" %% "salat-core" % "1.9.4" % "test",
+      "junit" % "junit" % "4.11" % "test"
       )),
 
     publishMavenStyle := true,
