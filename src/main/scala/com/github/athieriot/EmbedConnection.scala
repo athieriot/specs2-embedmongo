@@ -1,6 +1,5 @@
 package com.github.athieriot
 
-import scala.collection.JavaConversions._
 import de.flapdoodle.embed._
 import process.runtime.Network
 import mongo._
@@ -8,14 +7,8 @@ import config._
 import distribution._
 import org.specs2.specification._
 import org.specs2.mutable.SpecificationLike
-import com.mongodb.MongoClient
-import com.mongodb.ServerAddress
-import org.specs2.control.LazyParameter
-import org.specs2.execute.Result
-import org.specs2.execute.Executable
-import org.specs2.execute.Isolable
 
-trait EmbedConnection extends AfterExample with FragmentsBuilder {
+trait EmbedConnection extends FragmentsBuilder {
   self: SpecificationLike =>
   sequential
 
@@ -36,8 +29,6 @@ trait EmbedConnection extends AfterExample with FragmentsBuilder {
 
   lazy val mongodExecutable = runtime.prepare(mongodConfig)
 
-  lazy val mongoClient = new MongoClient(new ServerAddress(network.getServerAddress(), network.getPort()));
-
   override def map(fs: => Fragments) = startMongo ^ fs ^ stoptMongo
 
   private def startMongo() = {
@@ -46,9 +37,5 @@ trait EmbedConnection extends AfterExample with FragmentsBuilder {
 
   private def stoptMongo() = {
     Example("Stop Mongo", { mongodExecutable.stop; success })
-  }
-
-  def after() {
-    mongoClient.getDatabaseNames().map { mongoClient.getDB(_) }.foreach { _.dropDatabase() }
   }
 }

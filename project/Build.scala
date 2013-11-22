@@ -20,6 +20,7 @@ object ProjectBuild extends Build {
     libraryDependencies <++= scalaVersion(sv => Seq(
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.40",
       "org.specs2"  %% "specs2" % specs2Version(sv),
+      "org.mongodb" %% "casbah-core" % "2.6.4" % "provided",
       "com.novus" %% "salat-core" % "1.9.4" % "test"
       )),
 
