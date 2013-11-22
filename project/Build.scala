@@ -25,6 +25,8 @@ object ProjectBuild extends Build {
       "junit" % "junit" % "4.11" % "test"
       )),
 
+    parallelExecution in Test := false,
+
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },
