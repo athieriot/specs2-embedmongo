@@ -9,7 +9,8 @@ object ProjectBuild extends Build {
     organization := "com.github.athieriot",
     description := "Specs2 helper to configure a EmbedMongo based instance",
     version := buildVersion,
-    scalaVersion := "2.10.1",
+    scalaVersion := "2.10.4",
+    crossScalaVersions := Seq("2.10.4", "2.11.1"),
 
     resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
     resolvers += "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/",
@@ -18,10 +19,10 @@ object ProjectBuild extends Build {
     resolvers += "Sonatype releases" at "https://oss.sonatype.org/content/repositories/releases/",
 
     libraryDependencies <++= scalaVersion(sv => Seq(
-      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.40",
-      "org.specs2"  %% "specs2" % specs2Version(sv),
-      "org.mongodb" %% "casbah-core" % "2.6.4" % "provided",
-      "com.novus" %% "salat-core" % "1.9.4" % "test",
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.46.0",
+      "org.specs2"  %% "specs2" % "2.3.12",
+      "org.mongodb" %% "casbah-core" % "2.7.2" % "provided",
+      "com.novus" %% "salat-core" % "1.9.8" % "test",
       "junit" % "junit" % "4.11" % "test"
       )),
 
@@ -59,10 +60,4 @@ object ProjectBuild extends Build {
         Some("releases" at nexus + "service/local/staging/deploy/maven2")
     }
   )
-
-  private val specs2Version: String => String = {
-    case sv if sv startsWith "2.9."   => "1.12.4.1"
-    case _                            => "2.3.4"
-  }
-
 }
