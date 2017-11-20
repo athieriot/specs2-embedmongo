@@ -2,7 +2,7 @@ name := "specs2-embedmongo"
 
 organization := "com.github.athieriot"
 description := "Specs2 helper to configure a EmbedMongo based instance"
-version := "0.8-SNAPSHOT"
+version := "0.8.0"
 scalaVersion := "2.10.7"
 crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.4")
 
