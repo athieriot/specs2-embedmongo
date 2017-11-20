@@ -18,14 +18,10 @@ You can change thow default values:
 
  - [Sample I](https://github.com/athieriot/specs2-embedmongo/tree/master/src/test/scala/com/github/athieriot/EmbedConnectionSpec.scala)
 
- - [Sample II](https://github.com/athieriot/specs2-embedmongo/tree/master/src/test/scala/com/github/athieriot/CleanAfterExampleSpec.scala)
+ - [Sample II](https://github.com/athieriot/specs2-embedmongo/tree/master/src/test/scala/com/github/athieriot/CleanAfterEachSpec.scala)
 
 # Add as dependency
 
 Modify `project/Build.scala` and add
 
-`"com.github.athieriot" %% "specs2-embedmongo" % "0.7.0"`
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/athieriot/specs2-embedmongo/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+`"com.github.athieriot" %% "specs2-embedmongo" % "0.8.0"`
